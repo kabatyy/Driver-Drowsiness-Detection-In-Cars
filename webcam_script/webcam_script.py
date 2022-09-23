@@ -3,8 +3,12 @@ import numpy as np
 from PIL import Image, ImageDraw
 import face_recognition
 from tensorflow import keras
+import tensorflow as tf
 from playsound import playsound
-eye_model = keras.models.load_model('final_model.h5')
+
+eye_model = keras.models.load_model('final_model1.h5')
+
+
 
 # webcam frame is inputted into function
 
@@ -79,19 +83,15 @@ w = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 h = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 print(cap.get(cv2.CAP_PROP_FPS))
 
-
 if not cap.isOpened():
     raise IOError('Cannot open webcam')
-
-# set a counter
-
 counter = 0
 
 # create a while loop that runs while webcam is in use
 
 while True:
 
-    # capture frames being outputted by webcam
+    #creating a while loop that runs when webcam is in use
 
     ret, frame = cap.read()
 
@@ -122,43 +122,20 @@ while True:
     if prediction < 0.5:
         counter = 0
         status = 'Open'
-
-        cv2.rectangle(frame, (round(w/2) - 110,20), (round(w/2) + 110, 80), (38,38,38), -1)
-
         cv2.putText(frame, status, (round(w/2)-80,70), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,255,0), 2, cv2.LINE_4)
-        x1, y1,w1,h1 = 0,0,175,75
-        ## Draw black backgroun rectangle
-        cv2.rectangle(frame, (x1,x1), (x1+w1-20, y1+h1-20), (0,0,0), -1)
-        ## Add text
-        cv2.putText(frame, 'Active', (x1 +int(w1/10), y1+int(h1/2)), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255,0),2)
+
     else:
         counter = counter + 1
         status = 'Closed'
-
-        cv2.rectangle(frame, (round(w/2) - 110,20), (round(w/2) + 110, 80), (38,38,38), -1)
-
         cv2.putText(frame, status, (round(w/2)-104,70), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,0,255), 2, cv2.LINE_4)
-        x1, y1,w1,h1 = 0,0,175,75
-        ## Draw black backgroun rectangle
-        cv2.rectangle(frame, (x1,x1), (x1+w1-20, y1+h1-20), (0,0,0), -1)
-        ## Add text
-        cv2.putText(frame, 'Active', (x1 +int(w1/10), y1+int(h1/2)), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255,0),2)
-
-
+       
         # if the counter is greater than 3, play and show alert that user is asleep
 
         if counter > 2:
-
-            x1, y1, w1, h1 = 400,400,400,100
-            ## Draw black background rectangle
-            cv2.rectangle(frame, (round(w/2) - 160, round(h) - 200), (round(w/2) + 160, round(h) - 120), (0,0,255), -1)
-
             cv2.putText(frame, 'DRIVER SLEEPING', (round(w/2)-136,round(h) - 146), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,0), 2, cv2.LINE_4)
-
             cv2.imshow('Drowsiness Detection', frame)
             k = cv2.waitKey(1)
-            ## Sound
-            playsound('./rooster.mov')
+            playsound('rooster.mov')
             counter = 1
             continue
     cv2.imshow('Drowsiness Detection', frame)
