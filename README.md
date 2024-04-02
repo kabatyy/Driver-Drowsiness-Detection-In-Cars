@@ -24,11 +24,8 @@ The dataset has no class imbalance with open eyes and closed eyes having a ratio
 
 ## Defining Experimental design
 
-* Importing the relevant libraries used in the analysis.
 
 * Load and preview images
-
-* Explore the dataset we will use for our project.
 
 * Exploratory Data Analysis (EDA)
 
