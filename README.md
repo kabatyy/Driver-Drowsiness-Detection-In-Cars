@@ -1,7 +1,5 @@
 # Drowsiness Detection Using a Convolutional Neural Network
-**Samuel Kabati** 
 
-September 23rd, 2021
 ## Overview
 
 Drowsiness detection is a safety technology that can prevent accidents that are caused by drivers who fall asleep while driving.
