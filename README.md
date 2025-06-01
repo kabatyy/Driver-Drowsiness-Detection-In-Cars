@@ -4,7 +4,7 @@
 
 Drowsiness detection is a safety technology that can prevent accidents that are caused by drivers who fall asleep while driving.
 
-The objective of this intermediate Python project is to build a drowsiness detection system that will monitor the state of a person's eyes and then issue an alert if drowsiness is detected.
+The objective of this project is to build a drowsiness detection system that will monitor the state of a person's eyes and then issue an alert if drowsiness is detected.
 
 The data obtained from [Kaggle](https://www.kaggle.com/datasets/prasadvpatil/mrl-dataset).It was created with the help of a larger-scale dataset of human eyes from Media Research Lab.
 
